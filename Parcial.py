@@ -40,7 +40,7 @@ class RegistroDeViajes:
 
     def agregar_viaje(self, viaje):
         self._viajes.append(viaje)
-        print("✅ ¡Viaje registrado con éxito!")
+        print("¡Viaje registrado con éxito!")
 
     def _obtener_viajes_semanales(self):
         hoy = datetime.date.today()
@@ -50,19 +50,19 @@ class RegistroDeViajes:
     def mostrar_resumen_semanal(self):
         viajes_semanales = self._obtener_viajes_semanales()
         if not viajes_semanales:
-            print("🚫 No hay viajes registrados en la última semana.")
+            print(" No hay viajes registrados en la última semana.")
             return
 
         gasto_total = sum(v.costo for v in viajes_semanales)
         tiempo_total = sum(v.duracion for v in viajes_semanales)
 
         print("\n--- Resumen Semanal ---")
-        print(f"💰 Gasto total: ${gasto_total:.2f}")
-        print(f"⏱️ Tiempo total invertido: {tiempo_total} minutos\n")
+        print(f" Gasto total: ${gasto_total:.2f}")
+        print(f" Tiempo total invertido: {tiempo_total} minutos\n")
 
     def mostrar_todos_los_viajes(self):
         if not self._viajes:
-            print("🚫 Aún no has registrado ningún viaje.")
+            print("Aún no has registrado ningún viaje.")
             return
 
         print("\n--- Viajes Registrados ---")
@@ -80,11 +80,11 @@ def obtener_entrada_validada(mensaje, tipo, limite=None):
         try:
             entrada = tipo(input(mensaje))
             if limite is not None and entrada <= 0:
-                print("⚠️ El valor debe ser positivo. Intenta de nuevo.")
+                print("El valor debe ser positivo. Intenta de nuevo.")
                 continue
             return entrada
         except ValueError:
-            print("❌ Entrada inválida. Por favor, introduce un número válido.")
+            print("Entrada inválida. Por favor, introduce un número válido.")
 
 def main():
     """
@@ -121,7 +121,7 @@ def main():
                 nuevo_viaje = Viaje(ruta, costo, duracion, fecha)
                 registro.agregar_viaje(nuevo_viaje)
             except ValueError:
-                print("❌ Formato de fecha incorrecto. Usa dd-mm-yyyy.")
+                print("Formato de fecha incorrecto. Usa dd-mm-yyyy.")
 
         elif opcion == 2:
             registro.mostrar_resumen_semanal()
@@ -130,11 +130,11 @@ def main():
             registro.mostrar_todos_los_viajes()
 
         elif opcion == 4:
-            print("¡Gracias por usar el sistema! 👋")
+            print("¡Gracias por usar el sistema!")
             break
 
         else:
-            print("⚠️ Opción no válida. Por favor, selecciona del 1 al 4.")
+            print("Opción no válida. Por favor, selecciona del 1 al 4.")
 
 if __name__ == "__main__":
     main()
